@@ -1,19 +1,11 @@
-resource "aws_elasticsearch_domain" "test-domain-example" {
-  //domain_name           = "test-domain-example"
-  domain_name = var.domain_name
-  elasticsearch_version = "OpenSearch_${var.cluster_version}"
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
 
-  cluster_config {
-    //instance_type = "r6gd.4xlarge.elasticsearch"
-    instance_type = var.instance_type
-  }
 
-  ebs_options {
-    ebs_enabled = true
-    volume_size = var.ebs_volume_size
-  }
+module "opensearch-test" {
+  source = "./modules/opensearch-test"
+  domain_name = "domain-to-delete"
 
-  tags = {
-    Domain = var.domain_name
-  }
 }
+
+
