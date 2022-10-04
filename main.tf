@@ -4,7 +4,7 @@ data "aws_region" "current" {}
 
 module "opensearch-test" {
   source = "./modules/opensearch-test"
-  domain_name = "domain-to-delete"
+  domain_name = "domain-to-delete3"
 
 }
 
